@@ -2,7 +2,8 @@
 
 namespace TinyAccountManager.Abstraction
 {
-    public class AccountManager
+    public static class AccountManager
     {
+        public static IAccountManager Current { get; set; }
     }
 }
