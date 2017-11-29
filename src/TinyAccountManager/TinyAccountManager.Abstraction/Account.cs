@@ -8,6 +8,6 @@ namespace TinyAccountManager.Abstraction
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public Dictionary<string, object> Properties { get; set; }
+        public Dictionary<string, string> Properties { get; set; } = new Dictionary<string, string>();
     }
 }

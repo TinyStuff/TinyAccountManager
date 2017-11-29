@@ -9,5 +9,19 @@ namespace TinyAccountManager.UWP
 {
     public class UWPAccountManager : IAccountManager
     {
+        public Task Create(Account account)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Exists(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Account> Get(string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
