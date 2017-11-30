@@ -7,7 +7,7 @@ namespace TinyAccountManager.Abstraction
 {
     public interface IAccountManager
     {
-        Task Create(Account account);
+        Task Save(Account account);
         Task<Account> Get(string username);
         Task<bool> Exists(string username);
     }

@@ -11,18 +11,28 @@ namespace TinyAccountManager.iOS
 {
     public class iOSAccountManager : IAccountManager
     {
-        public async Task Create(Account account)
+        public async Task Save(Account account)
         {
             var data = JsonConvert.SerializeObject(account.Properties);
 
             var secRecord = new SecRecord(SecKind.GenericPassword)
             {
                 Account = account.Username,
-                Generic = account.Password,
+                Generic = account.Password ?? string.Empty,
                 ValueData = NSData.FromString(data)
             };
 
-            SecKeyChain.Add(secRecord);
+            var old = await Find(account.Username);
+
+            if (old == null)
+            {
+                SecKeyChain.Add(secRecord);
+
+                return;
+            }
+
+            SecKeyChain.Update(old, secRecord);
+
         }
 
         private async Task<SecRecord> Find(string username)

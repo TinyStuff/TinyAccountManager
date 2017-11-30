@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TinyAccountManager.Sample"
+             x:Class="TinyAccountManager.Sample.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Clicked="SaveClicked"  Text="Save account data" />
+            <Button Clicked="GetClicked" Text="Get account" />
+            <Button Clicked="ExistsClicked" Text="Account exists?" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
