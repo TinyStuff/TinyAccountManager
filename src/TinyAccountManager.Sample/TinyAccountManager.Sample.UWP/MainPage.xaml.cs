@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using TinyAccountManager.UWP;
 
 namespace TinyAccountManager.Sample.UWP
 {
@@ -20,6 +21,8 @@ namespace TinyAccountManager.Sample.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            AccountManager.Initialize();
 
             LoadApplication(new TinyAccountManager.Sample.App());
         }

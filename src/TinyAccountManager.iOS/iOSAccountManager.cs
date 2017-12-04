@@ -24,15 +24,15 @@ namespace TinyAccountManager.iOS
             {
                 Account = account.Username,
                 Service = account.ServiceId,
-                Generic = account.Password ?? string.Empty,
-                ValueData = NSData.FromString(data)
+                ValueData = NSData.FromString(data, NSStringEncoding.UTF8),
+                Accessible = SecAccessible.AfterFirstUnlockThisDeviceOnly
             };
 
             var old = await Find(account.Username, account.ServiceId);
 
             if (old == null)
             {
-                SecKeyChain.Add(secRecord);
+                var statusCode = SecKeyChain.Add(secRecord);
 
                 return;
             }
@@ -80,7 +80,6 @@ namespace TinyAccountManager.iOS
             var account = new Account()
             {
                 Username = result.Account,
-                Password = result.Generic.ToString(),
                 Properties = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.ValueData.ToString())
             };
 
