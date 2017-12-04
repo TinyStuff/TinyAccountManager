@@ -13,16 +13,22 @@ namespace TinyAccountManager.iOS
     {
         public async Task Save(Account account)
         {
+            if(string.IsNullOrWhiteSpace(account.ServiceId))
+            {
+                throw new Exception("Account.ServiceId must be set.");
+            }
+
             var data = JsonConvert.SerializeObject(account.Properties);
 
             var secRecord = new SecRecord(SecKind.GenericPassword)
             {
                 Account = account.Username,
+                Service = account.ServiceId,
                 Generic = account.Password ?? string.Empty,
                 ValueData = NSData.FromString(data)
             };
 
-            var old = await Find(account.Username);
+            var old = await Find(account.Username, account.ServiceId);
 
             if (old == null)
             {
@@ -35,16 +41,17 @@ namespace TinyAccountManager.iOS
 
         }
 
-        private async Task<SecRecord> Find(string username)
+        private async Task<SecRecord> Find(string username, string serviceId)
         {
-            var secRecord = new SecRecord(SecKind.GenericPassword)
+            var query = new SecRecord(SecKind.GenericPassword)
             {
-                Account = username
+                Account = username,
+                Service = serviceId
             };
 
             SecStatusCode status;
 
-            var result = SecKeyChain.QueryAsRecord(secRecord, out status);
+            var result = SecKeyChain.QueryAsRecord(query, out status);
 
             if(status == SecStatusCode.Success)
             {
@@ -54,16 +61,16 @@ namespace TinyAccountManager.iOS
             return null;
         }
 
-        public async Task<bool> Exists(string username)
+        public async Task<bool> Exists(string username, string serviceId)
         {
-            var result = await Find(username);
+            var result = await Find(username, serviceId);
 
             return (result != null);
         }
 
-        public async Task<Account> Get(string username)
+        public async Task<Account> Get(string username, string serviceId)
         {
-            var result = await Find(username);
+            var result = await Find(username, serviceId);
 
             if(result == null)
             {

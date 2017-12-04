@@ -26,6 +26,7 @@ namespace TinyAccountManager.Sample
 
             var account = new Account()
             {
+                ServiceId = "TinyAccountManager",
                 Username = "TinyUser",
                 Properties = data
             };
@@ -35,16 +36,30 @@ namespace TinyAccountManager.Sample
 
         private async void GetClicked(object sender, EventArgs e)
         {
-            var account = await accountManager.Get("TinyUser");
+            try
+            {
+                var account = await accountManager.Get("TinyUser", "TinyAccountManager");
 
-            DisplayAlert("Message", account.Properties["Age"], "OK");
+                DisplayAlert("Message", account.Properties["Age"], "OK");
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
         private async void ExistsClicked(object sender, EventArgs e)
         {
-            var exists = await accountManager.Exists("TinyUser");
+            try
+            {
+                var exists = await accountManager.Exists("TinyUser", "TinyAccountManager");
 
-            DisplayAlert("Message", exists.ToString(), "OK");
+                DisplayAlert("Message", exists.ToString(), "OK");
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
