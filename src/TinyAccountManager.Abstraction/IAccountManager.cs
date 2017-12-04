@@ -10,5 +10,6 @@ namespace TinyAccountManager.Abstraction
         Task Save(Account account);
         Task<Account> Get(string username, string serviceId);
         Task<bool> Exists(string username, string serviceId);
+        Task Remove(string username, string serviceId);
     }
 }

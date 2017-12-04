@@ -86,5 +86,12 @@ namespace TinyAccountManager.iOS
 
             return account;
         }
+
+        public async Task Remove(string username, string serviceId)
+        {
+            var result = await Find(username, serviceId);
+
+            SecKeyChain.Remove(result);
+        }
     }
 }

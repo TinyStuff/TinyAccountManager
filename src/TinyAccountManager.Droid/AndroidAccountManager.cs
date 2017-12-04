@@ -15,17 +15,22 @@ namespace TinyAccountManager.Droid
 {
     public class AndroidAccountManager : IAccountManager
     {
-        public Task Create(Account account)
+        public Task<bool> Exists(string username, string serviceId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Exists(string username)
+        public Task<Account> Get(string username, string serviceId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Account> Get(string username)
+        public Task Remove(string username, string serviceId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Save(Account account)
         {
             throw new NotImplementedException();
         }
