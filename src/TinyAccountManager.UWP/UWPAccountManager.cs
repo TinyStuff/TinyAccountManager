@@ -64,6 +64,11 @@ namespace TinyAccountManager.UWP
 
         public async Task Save(Account account)
         {
+            if (string.IsNullOrWhiteSpace(account.ServiceId) || string.IsNullOrWhiteSpace(account.Username))
+            {
+                throw new Exception("serviceId and username must be set.");
+            }
+
             var json = JsonConvert.SerializeObject(account);
 
             var localFolder = ApplicationData.Current.LocalFolder;
