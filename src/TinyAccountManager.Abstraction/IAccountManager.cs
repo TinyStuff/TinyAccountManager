@@ -8,8 +8,8 @@ namespace TinyAccountManager.Abstraction
     public interface IAccountManager
     {
         Task Save(Account account);
-        Task<Account> Get(string username, string serviceId);
-        Task<bool> Exists(string username, string serviceId);
-        Task Remove(string username, string serviceId);
+        Task<Account> Get(string serviceId);
+        Task<bool> Exists(string serviceId);
+        Task Remove(string serviceId);
     }
 }
