@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata minClientVersion="2.8.1">
+       <id>TinyAccountManager</id>
+       <version>1.0.0/version>
+       <title>Account manager for Xamarin and UWP.</title>
+       <authors>Daniel Hindrikes & Johan Karlsson/authors>
+       <owners>Daniel Hindrikes</owners>
+       <licenseUrl>https://github.com/dhindrik/TinyAccountManager/blob/master/LICENSE</licenseUrl>
+       <projectUrl>https://github.com/dhindrik/TinyAccountManager</projectUrl>
+
+       <requireLicenseAcceptance>false</requireLicenseAcceptance>
+       <description>
+         Account manager for Xamarin and UWP. Store account information in your app in a secure way.
+       </description>
+     <releaseNotes>
+   
+     </releaseNotes>
+      
+       <tags>xamarin, plugin, windows, android, xamarin.forms, ios</tags>
+       <dependencies>
+         <group targetFramework="netstandard1.0">
+           <dependency id="Newtonsoft.Json" version="10.0.3"/>
+         </group>
+         <group targetFramework="MonoAndroid10">
+           <dependency id="Newtonsoft.Json" version="10.0.3"/>
+         </group>
+         <group targetFramework="Xamarin.iOS10">
+          <dependency id="Newtonsoft.Json" version="10.0.3"/>
+         </group>      
+       </dependencies>
+   </metadata>
+   <files>
+     <!--Standard-->
+     <file src="../../TinyAccountManager.UWP-CI/UWP/bin/Release/TinyAccountManager.Abstraction.dll" target="lib\netstandard1.0" />
+
+     <!--Xamarin.Android-->
+     <file src="../../TinyAccountManager.Android-CI/Android/bin/Release/TinyAccountManager.Abstraction.dll" target="lib\MonoAndroid10" />
+     <file src="../../TinyAccountManager.Android-CI/Android/bin/Release/TinyAccountManager.Droid.dll" target="lib\MonoAndroid10" />
+  
+     <!--Xamarin.iOS-->
+     <file src="../../TinyAccountManager.iOS-CI/iOS/TinyAccountManager.Abstraction.dll" target="lib\Xamarin.iOS10" />
+     <file src="../../TinyAccountManager.iOS-CI/iOS/TinyAccountManager.iOS.dll" target="lib\Xamarin.iOS10" />
+     
+     <!--UWP-->
+     <file src="../../TinyAccountManager.UWP-CI/UWP/bin/Release/TinyAccountManager.Abstraction.dll" target="lib\UAP10" />
+   </files>
+</package>
