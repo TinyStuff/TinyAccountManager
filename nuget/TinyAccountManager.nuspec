@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata minClientVersion="2.8.1">
        <id>TinyAccountManager</id>
-       <version>1.0.0/version>
+       <version>1.0.0</version>
        <title>Account manager for Xamarin and UWP.</title>
        <authors>Daniel Hindrikes & Johan Karlsson/authors>
        <owners>Daniel Hindrikes</owners>
