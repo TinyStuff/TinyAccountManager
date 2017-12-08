@@ -28,7 +28,7 @@ namespace TinyAccountManager.iOS
                 Accessible = SecAccessible.AfterFirstUnlockThisDeviceOnly
             };
 
-            var old = await Find(account.Username, account.ServiceId);
+            var old = await Find(account.ServiceId);
 
             if (old == null)
             {
@@ -41,11 +41,10 @@ namespace TinyAccountManager.iOS
 
         }
 
-        private async Task<SecRecord> Find(string username, string serviceId)
+        private async Task<SecRecord> Find(string serviceId)
         {
             var query = new SecRecord(SecKind.GenericPassword)
             {
-                Account = username,
                 Service = serviceId
             };
 
@@ -61,16 +60,16 @@ namespace TinyAccountManager.iOS
             return null;
         }
 
-        public async Task<bool> Exists(string username, string serviceId)
+        public async Task<bool> Exists(string serviceId)
         {
-            var result = await Find(username, serviceId);
+            var result = await Find(serviceId);
 
             return (result != null);
         }
 
-        public async Task<Account> Get(string username, string serviceId)
+        public async Task<Account> Get(string serviceId)
         {
-            var result = await Find(username, serviceId);
+            var result = await Find(serviceId);
 
             if(result == null)
             {
@@ -86,9 +85,9 @@ namespace TinyAccountManager.iOS
             return account;
         }
 
-        public async Task Remove(string username, string serviceId)
+        public async Task Remove(string serviceId)
         {
-            var result = await Find(username, serviceId);
+            var result = await Find(serviceId);
 
             SecKeyChain.Remove(result);
         }

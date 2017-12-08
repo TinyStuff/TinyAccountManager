@@ -49,20 +49,16 @@ namespace TinyAccountManager.Droid
             return key;
         }
 
-        private string GetAlias(string username, string serviceId)
-        {
-            return serviceId + "_" + username;
-        }
+       
 
-        public async Task<bool> Exists(string username, string serviceId)
+        public async Task<bool> Exists(string serviceId)
         {
             try
             {
-                var alias = GetAlias(username, serviceId);
 
                 var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-                var filePath = Path.Combine(documentsPath, alias);
+                var filePath = Path.Combine(documentsPath, serviceId);
 
                 return File.Exists(filePath);
             }
@@ -72,19 +68,18 @@ namespace TinyAccountManager.Droid
             } 
         }
 
-        public async Task<Account> Get(string username, string serviceId)
+        public async Task<Account> Get(string serviceId)
         {
-            var alias = GetAlias(username, serviceId);
 
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-            var filePath = Path.Combine(documentsPath, alias);
+            var filePath = Path.Combine(documentsPath, serviceId);
 
             var secretAccountJson = File.ReadAllText(filePath);
 
             var secretAccount = JsonConvert.DeserializeObject<SecretAccount>(secretAccountJson);
 
-            var key = GetKey(alias);
+            var key = GetKey(serviceId);
 
             var cipher = Cipher.GetInstance(AesMode);
             cipher.Init(CipherMode.DecryptMode, key, new GCMParameterSpec(128, secretAccount.IV));
@@ -100,13 +95,11 @@ namespace TinyAccountManager.Droid
             return account;
         }
 
-        public async Task Remove(string username, string serviceId)
+        public async Task Remove(string serviceId)
         {
-            var alias = GetAlias(username, serviceId);
-
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-            var filePath = Path.Combine(documentsPath, alias);
+            var filePath = Path.Combine(documentsPath, serviceId);
 
             File.Delete(filePath);
         }
@@ -118,9 +111,7 @@ namespace TinyAccountManager.Droid
                 throw new Exception("serviceId and username must be set.");
             }
 
-            var alias = GetAlias(account.Username, account.ServiceId);
-
-            var key = GetKey(alias);
+            var key = GetKey(account.ServiceId);
 
             var cipher = Cipher.GetInstance(AesMode);
             cipher.Init(CipherMode.EncryptMode, key);
@@ -145,7 +136,7 @@ namespace TinyAccountManager.Droid
 
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-            var filePath = Path.Combine(documentsPath, alias);
+            var filePath = Path.Combine(documentsPath, account.ServiceId);
             System.IO.File.WriteAllText(filePath, secretAccountJson);
 
         } 
