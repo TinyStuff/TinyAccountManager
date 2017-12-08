@@ -53,7 +53,7 @@ await AccountMananger.Current.Save(account);
 ```
 
 #### Get and Exists
-It's reccommended that you use Exists before Get, if you using Get and there is no matching account ith will throw an exception.
+It's recommended that you use Exists before Get, if you using Get and there is no matching account it will throw an exception.
 ```csharp
 Account account = null;
 
