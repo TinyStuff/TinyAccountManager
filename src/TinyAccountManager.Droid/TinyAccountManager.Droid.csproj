@@ -58,12 +58,6 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TinyAccountManager.Abstraction\TinyAccountManager.Abstraction.csproj">
-      <Project>{E8EB6EE2-30FC-4BC3-AE8C-4160172A714C}</Project>
-      <Name>TinyAccountManager.Abstraction</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,4 +4,8 @@
     <TargetFramework>netstandard1.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TinyAccountManager" Version="1.0.1" />
+  </ItemGroup>
+
 </Project>

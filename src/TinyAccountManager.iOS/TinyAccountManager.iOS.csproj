@@ -51,12 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TinyAccountManager.Abstraction\TinyAccountManager.Abstraction.csproj">
-      <Project>{E8EB6EE2-30FC-4BC3-AE8C-4160172A714C}</Project>
-      <Name>TinyAccountManager.Abstraction</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
