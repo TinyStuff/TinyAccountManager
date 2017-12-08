@@ -44,5 +44,6 @@
      
      <!--UWP-->
      <file src="../../TinyAccountManager.UWP-CI/UWP/bin/Release/TinyAccountManager.Abstraction.dll" target="lib\UAP10" />
+	 <file src="../../TinyAccountManager.UWP-CI/UWP/bin/Release/TinyAccountManager.UWP.dll" target="lib\UAP10" />
    </files>
 </package>
