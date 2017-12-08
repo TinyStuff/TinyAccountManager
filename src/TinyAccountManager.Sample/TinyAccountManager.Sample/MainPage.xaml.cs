@@ -38,7 +38,7 @@ namespace TinyAccountManager.Sample
         {
             try
             {
-                var account = await accountManager.Get("TinyUser", "TinyAccountManager");
+                var account = await accountManager.Get("TinyAccountManager");
 
                 DisplayAlert("Message", account.Properties["Age"], "OK");
             }
@@ -52,7 +52,7 @@ namespace TinyAccountManager.Sample
         {
             try
             {
-                var exists = await accountManager.Exists("TinyUser", "TinyAccountManager");
+                var exists = await accountManager.Exists("TinyAccountManager");
 
                 DisplayAlert("Message", exists.ToString(), "OK");
             }
