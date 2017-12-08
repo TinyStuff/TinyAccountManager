@@ -73,7 +73,7 @@ namespace TinyAccountManager.iOS
 
             if(result == null)
             {
-                throw new Exception(string.Format("Account with username: {0}, does not exists", username));
+                throw new Exception(string.Format("Account with serviceId: {0}, does not exists", serviceId));
             }
 
             var account = new Account()

@@ -14,9 +14,9 @@ namespace TinyAccountManager.UWP
 {
     public class UWPAccountManager : IAccountManager
     {
-        public async Task<bool> Exists(string username, string serviceId)
+        public async Task<bool> Exists(string serviceId)
         {
-            var filename = serviceId + "_" + username;
+            var filename = serviceId;
 
             try
             {
@@ -33,9 +33,9 @@ namespace TinyAccountManager.UWP
             return true;
         }
 
-        public async Task<Account> Get(string username, string serviceId)
+        public async Task<Account> Get(string serviceId)
         {
-            var filename = serviceId + "_" + username;
+            var filename = serviceId;
 
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(filename);
 
@@ -52,9 +52,9 @@ namespace TinyAccountManager.UWP
             return account;
         }
 
-        public async Task Remove(string username, string serviceId)
+        public async Task Remove(string serviceId)
         {
-            var filename = serviceId + "_" + username;
+            var filename = serviceId;
 
             var file = await ApplicationData.Current.LocalFolder.GetFileAsync(filename);
 
@@ -79,7 +79,7 @@ namespace TinyAccountManager.UWP
 
             var protectedBuffer = await provider.ProtectAsync(buffer);
 
-            var filename = account.ServiceId + "_" + account.Username;
+            var filename = account.ServiceId;
 
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(filename,CreationCollisionOption.OpenIfExists);
             

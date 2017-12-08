@@ -121,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyAccountManager.Abstraction\TinyAccountManager.Abstraction.csproj">
-      <Project>{E8EB6EE2-30FC-4BC3-AE8C-4160172A714C}</Project>
+      <Project>{e8eb6ee2-30fc-4bc3-ae8c-4160172a714c}</Project>
       <Name>TinyAccountManager.Abstraction</Name>
     </ProjectReference>
   </ItemGroup>
