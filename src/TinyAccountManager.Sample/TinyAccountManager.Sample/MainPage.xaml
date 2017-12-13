@@ -8,6 +8,8 @@
             <Button Clicked="SaveClicked"  Text="Save account data" />
             <Button Clicked="GetClicked" Text="Get account" />
             <Button Clicked="ExistsClicked" Text="Account exists?" />
+            <Button Clicked="ExistsFalseClicked" Text="Account exists (always false)" />
+            <Button Clicked="RemoveClicked" Text="Remove account" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

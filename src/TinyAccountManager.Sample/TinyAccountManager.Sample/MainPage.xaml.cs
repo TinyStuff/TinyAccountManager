@@ -40,7 +40,7 @@ namespace TinyAccountManager.Sample
             {
                 var account = await accountManager.Get("TinyAccountManager");
 
-                DisplayAlert("Message", account.Properties["Age"], "OK");
+                await DisplayAlert("Message", account.Properties["Age"], "OK");
             }
             catch (Exception)
             {
@@ -54,12 +54,31 @@ namespace TinyAccountManager.Sample
             {
                 var exists = await accountManager.Exists("TinyAccountManager");
 
-                DisplayAlert("Message", exists.ToString(), "OK");
+                await DisplayAlert("Message", exists.ToString(), "OK");
             }
             catch (Exception)
             {
 
             }
+        }
+
+        private async void RemoveClicked(object sender, EventArgs e)
+        {
+            await accountManager.Remove("TinyAccountManager");
+        }
+
+        private async void ExistsFalseClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var exists = await accountManager.Exists(Guid.NewGuid().ToString());
+
+                await DisplayAlert("Message", exists.ToString(), "OK");
+            }
+            catch (Exception ex)
+            {
+
+             }
         }
     }
 }
