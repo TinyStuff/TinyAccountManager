@@ -87,9 +87,18 @@ namespace TinyAccountManager.iOS
 
         public async Task Remove(string serviceId)
         {
-            var result = await Find(serviceId);
 
-            SecKeyChain.Remove(result);
+            var query = new SecRecord(SecKind.GenericPassword)
+            {
+                Service = serviceId
+            };
+
+            var status = SecKeyChain.Remove(query);
+
+            if (status != SecStatusCode.Success)
+            {
+                throw new Exception("Account cannot be removed. Status code: " + status);
+            }
         }
     }
 }
