@@ -106,9 +106,9 @@ namespace TinyAccountManager.Droid
 
         public async Task Save(Account account)
         {
-            if (string.IsNullOrWhiteSpace(account.ServiceId) || string.IsNullOrWhiteSpace(account.Username))
+            if (string.IsNullOrWhiteSpace(account.ServiceId))
             {
-                throw new Exception("serviceId and username must be set.");
+                throw new Exception("serviceId must be set.");
             }
 
             var key = GetKey(account.ServiceId);
