@@ -19,7 +19,7 @@ namespace TinyAccountManager.Droid
                 if (Build.VERSION.SdkInt > BuildVersionCodes.M)
                     Abstraction.AccountManager.Current = new AndroidAccountManager();
                 else
-                    Abstraction.AccountManager.Current = new AndroidAccountManagerPreM(Application.Context, "XXX");
+                    Abstraction.AccountManager.Current = new AndroidAccountManagerPreM(Application.Context, "AccountManagerSharedPreferences");
         }
     }
 }
