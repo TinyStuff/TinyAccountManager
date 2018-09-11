@@ -1,3 +1,7 @@
+# Xamarin.Essentials
+Xamarin.Essentials will have this functionallity, please take a look at it. But we will continue to maintain TinyAccountMananger for thoose who use it. 
+https://docs.microsoft.com/en-us/xamarin/essentials/
+
 # TinyAccountManager
 Account manager for Xamarin and UWP. Store account information in your app in a secure way.
 
